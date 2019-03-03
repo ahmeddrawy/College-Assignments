@@ -32,7 +32,7 @@ Matrix<T>::Matrix(const Matrix<T>  &obj){    /// todo
     
 }
 template  <class  T>
-Matrix<T>  Matrix :: operator+(Matrix<T>& obj){         /// done with the matrices with the same data type
+Matrix<T> :: Matrix operator+(Matrix<T>& obj){         /// done with the matrices with the same data type
     if(this->row != obj.row || this->column !=  obj.column   ) {
         cout << "Can't add two matrices with different sizes\n";
         return *this;
@@ -50,7 +50,7 @@ Matrix<T>  Matrix :: operator+(Matrix<T>& obj){         /// done with the matric
     
 }
 template  <class  T>
-Matrix<T>&  Matrix <T>:: operator-(Matrix<T>& obj){         /// done with the matrices with the same data type
+Matrix<T> ::  Matrix operator-(Matrix<T>& obj){         /// done with the matrices with the same data type
     if(this->row != obj.row || this->column !=  obj.column   ) {
         cout << "Can't subtract two matrices with different sizes\n";
         return *this;
@@ -68,7 +68,7 @@ Matrix<T>&  Matrix <T>:: operator-(Matrix<T>& obj){         /// done with the ma
     
 }
 template  <class  T>
-Matrix <T>  Matrix<T>  :: operator * (Matrix<T> obj){ ///todo
+Matrix <T>::  Matrix operator * (Matrix<T> obj){ ///todo
     if(this->column !=obj.row){
         cout<<"Can't Multiply two matrices the column of the first not equal the row of the second\n";
         return  *this;

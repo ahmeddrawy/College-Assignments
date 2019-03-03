@@ -19,8 +19,8 @@ public:
     
     Matrix(const Matrix  &obj);
     
-    Matrix operator+(Matrix<T>& obj);
-    Matrix& operator-(Matrix<T>& obj);
+    Matrix operator+(Matrix& obj);
+    Matrix operator-(Matrix& obj);
     Matrix  operator * (Matrix obj); ///todo
     
     
@@ -34,7 +34,7 @@ public:
         return in ;
     }
     
-    friend ostream &operator <<(ostream &  out , Matrix <T> obj){     /// done
+    friend ostream &operator <<( ostream &  out ,const Matrix <T> obj){     /// done
         for(int i = 0 ; i<obj.row ; ++i){
             for(int j =0 ; j< obj.column ; ++j){
                 out<<obj.ptrMatrix[i][j]<<" ";
