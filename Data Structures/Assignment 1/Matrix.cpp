@@ -15,7 +15,7 @@ Matrix<T> ::Matrix(int r , int c){          /// done
         ptrMatrix[i] = new T[c];
 }
 template  <class  T>
-Matrix<T>::Matrix(const Matrix<T>  &obj){    /// todo
+Matrix<T>  ::Matrix(const Matrix &obj){    /// todo
     this->row    = obj.row;
     this->column = obj.column;
     this->flag = obj.flag;
@@ -32,7 +32,7 @@ Matrix<T>::Matrix(const Matrix<T>  &obj){    /// todo
     
 }
 template  <class  T>
-Matrix<T> :: Matrix operator+(Matrix<T>& obj){         /// done with the matrices with the same data type
+Matrix<T>  Matrix<T>:: operator+(Matrix<T> obj){         /// done with the matrices with the same data type
     if(this->row != obj.row || this->column !=  obj.column   ) {
         cout << "Can't add two matrices with different sizes\n";
         return *this;
@@ -50,7 +50,7 @@ Matrix<T> :: Matrix operator+(Matrix<T>& obj){         /// done with the matrice
     
 }
 template  <class  T>
-Matrix<T> ::  Matrix operator-(Matrix<T>& obj){         /// done with the matrices with the same data type
+Matrix<T>  Matrix<T> :: operator-(Matrix<T> obj){         /// done with the matrices with the same data type
     if(this->row != obj.row || this->column !=  obj.column   ) {
         cout << "Can't subtract two matrices with different sizes\n";
         return *this;
@@ -68,7 +68,7 @@ Matrix<T> ::  Matrix operator-(Matrix<T>& obj){         /// done with the matric
     
 }
 template  <class  T>
-Matrix <T>::  Matrix operator * (Matrix<T> obj){ ///todo
+Matrix <T>  Matrix<T> :: operator * (Matrix<T> obj){ ///todo
     if(this->column !=obj.row){
         cout<<"Can't Multiply two matrices the column of the first not equal the row of the second\n";
         return  *this;
@@ -85,6 +85,24 @@ Matrix <T>::  Matrix operator * (Matrix<T> obj){ ///todo
     return ret;
     
     
+}
+template<class T>
+Matrix <T> Matrix <T> ::transpose() {
+    int Nr = this->column ;
+    int Nc = this->row ;
+    T ** Nptr = new T*[Nr];
+    for(int i = 0 ; i < Nr ; ++i )
+        Nptr[i] = new T[Nc];
+    for(int i = 0 ; i <row ; ++i){
+        for (int j = 0; j < column; ++j) {
+            Nptr[j][i] = ptrMatrix[i][j];
+        }
+    }
+    delete []ptrMatrix ;
+    ptrMatrix = Nptr;
+    this->row = Nr;
+    this->column = Nc;
+    return *this;
 }
 template class Matrix<int>;
 template class Matrix<double>;

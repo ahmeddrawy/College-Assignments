@@ -16,25 +16,24 @@ private :
 public:
     Matrix();
     Matrix(int r , int c);          /// done
+    Matrix(const Matrix  &obj);     /// done
     
-    Matrix(const Matrix  &obj);
-    
-    Matrix operator+(Matrix& obj);
-    Matrix operator-(Matrix& obj);
+    Matrix operator+(Matrix<T> obj);
+    Matrix operator-(Matrix<T> obj);
     Matrix  operator * (Matrix obj); ///todo
+    Matrix transpose();
     
-    
-    friend istream& operator >> (istream & in , Matrix<T> obj  ){    ///  done
+    friend istream& operator >> (istream & in , Matrix<T> &obj  ){    ///  done
         for(int i = 0 ; i<obj.row ; ++i){
             for(int j =0 ; j< obj.column ; ++j){
-                cout<<"Enter the cell "<<i<<" "<<j<<"in The Matrix : ";
+//                cout<<"Enter the cell "<<i<<" "<<j<<"in The Matrix : ";
                 in>>obj.ptrMatrix[i][j];
             }
         }
         return in ;
     }
     
-    friend ostream &operator <<( ostream &  out ,const Matrix <T> obj){     /// done
+    friend ostream &operator <<( ostream &  out ,const Matrix <T> &obj){     /// done
         for(int i = 0 ; i<obj.row ; ++i){
             for(int j =0 ; j< obj.column ; ++j){
                 out<<obj.ptrMatrix[i][j]<<" ";
