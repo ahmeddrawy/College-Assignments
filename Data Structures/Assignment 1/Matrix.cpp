@@ -1,13 +1,13 @@
 #include "Matrix.h"
 #include <bits/stdc++.h>
-using namespace ;
-template  <typename  T>
-Matrix ::Matrix() {
+using namespace std;
+template  <class  T>
+Matrix<T> ::Matrix() {
     ptrMatrix = nullptr;
     flag = 0;
 }
 template  <class  T>
-Matrix ::Matrix(int r , int c){          /// done
+Matrix<T> ::Matrix(int r , int c){          /// done
     row = r , column = c;
     flag = 1;
     ptrMatrix = new T*[r];
@@ -15,7 +15,7 @@ Matrix ::Matrix(int r , int c){          /// done
         ptrMatrix[i] = new T[c];
 }
 template  <class  T>
-Matrix::Matrix(const Matrix<T>  &obj){    /// todo
+Matrix<T>::Matrix(const Matrix<T>  &obj){    /// todo
     this->row    = obj.row;
     this->column = obj.column;
     this->flag = obj.flag;
@@ -26,13 +26,13 @@ Matrix::Matrix(const Matrix<T>  &obj){    /// todo
         ptrMatrix[i] = new T[column];
     for(int i = 0 ; i < row ; ++i) {
         for (int j = 0; j < column; ++j) {
-            this->ptrMatrix = obj.ptrMatrix[i][j];
+            this->ptrMatrix[i][j] = obj.ptrMatrix[i][j];
         }
     }
     
 }
 template  <class  T>
-Matrix :: Matrix  operator+(Matrix<T>& obj){         /// done with the matrices with the same data type
+Matrix<T>  Matrix :: operator+(Matrix<T>& obj){         /// done with the matrices with the same data type
     if(this->row != obj.row || this->column !=  obj.column   ) {
         cout << "Can't add two matrices with different sizes\n";
         return *this;
