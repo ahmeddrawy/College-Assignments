@@ -33,10 +33,9 @@ Matrix<T>  ::Matrix(const Matrix &obj){    /// todo
 }
 template  <class  T>
 Matrix<T>  Matrix<T>:: operator+(Matrix<T> obj){         /// done with the matrices with the same data type
-    if(this->row != obj.row || this->column !=  obj.column   ) {
-        cout << "Can't add two matrices with different sizes\n";
-        return *this;
-    }
+    assert(this->row == obj.row || this->column ==  obj.column   ) ;
+    
+    
     if(!this->flag || !obj.flag){
         cout<<"Uninitialised matrices\n";
         return *this;
@@ -51,10 +50,7 @@ Matrix<T>  Matrix<T>:: operator+(Matrix<T> obj){         /// done with the matri
 }
 template  <class  T>
 Matrix<T>  Matrix<T> :: operator-(Matrix<T> obj){         /// done with the matrices with the same data type
-    if(this->row != obj.row || this->column !=  obj.column   ) {
-        cout << "Can't subtract two matrices with different sizes\n";
-        return *this;
-    }
+    assert(this->row == obj.row || this->column ==  obj.column   ) ;
     if(!this->flag || !obj.flag){
         cout<<"Uninitialised matrices\n";
         return *this;
@@ -69,10 +65,11 @@ Matrix<T>  Matrix<T> :: operator-(Matrix<T> obj){         /// done with the matr
 }
 template  <class  T>
 Matrix <T>  Matrix<T> :: operator * (Matrix<T> obj){ ///todo
-    if(this->column !=obj.row){
+    assert(this->column ==obj.row);
+    /*{
         cout<<"Can't Multiply two matrices the column of the first not equal the row of the second\n";
         return  *this;
-    }
+    }*/
     Matrix<T> ret(this->row , obj.column);
     for (int i = 0; i < this->row; ++i) {       /// looping over each row in the this matrix
         for (int j = 0; j < obj.column; ++j) {  /// looping over each column in obj matrix for every row in this matrix

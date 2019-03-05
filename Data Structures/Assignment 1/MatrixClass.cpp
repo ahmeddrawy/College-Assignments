@@ -40,16 +40,16 @@
 #include <iostream>
 #include <bits/stdc++.h>
 #include "Matrix.h"
-#incude "Calcualater.h"
+#include "Calcualater.h"
  using namespace std;
 
 int main() {
-  freopen("in.txt","r",stdin);
+//  freopen("in.txt","r",stdin);
     Matrix<int > m(3 , 2) ;
     Matrix<int> n(2 , 3) ;
-    
-    cin>>m >> n;
-    cout<<m.transpose();
-    cout<<(m*n);
+    Calcualater c;
+//    cin>>m >> n;
+//    cout<<m.transpose();
+//    cout<<(m*n);
     return 0;
 }

@@ -1,5 +1,5 @@
 //
-// Created by ahmed on 3/2/2019.
+// Created by Ahmed  Hanafy on 3/2/2019.
 //
 #include <bits/stdc++.h>
 using namespace std;
@@ -26,7 +26,7 @@ public:
     friend istream& operator >> (istream & in , Matrix<T> &obj  ){    ///  done
         for(int i = 0 ; i<obj.row ; ++i){
             for(int j =0 ; j< obj.column ; ++j){
-//                cout<<"Enter the cell "<<i<<" "<<j<<"in The Matrix : ";
+                cout<<"Enter the cell ("<<i<<" , "<<j<<" )in The Matrix : ";
                 in>>obj.ptrMatrix[i][j];
             }
         }
