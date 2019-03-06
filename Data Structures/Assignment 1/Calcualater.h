@@ -28,9 +28,9 @@ public:
                 print();
                 cin >> option;
             }
-            while(option<0 ||option >5)
+            while(option<0 ||option >5);
             
-            cout << "please enter an option"
+            cout << "please enter an option\n";
     
         }
         

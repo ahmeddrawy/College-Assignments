@@ -3,7 +3,8 @@
 using namespace std;
 template  <class  T>
 Matrix<T> ::Matrix() {
-    ptrMatrix = nullptr;
+    row = 0 , column = 0;
+    ptrMatrix = NULL;
     flag = 0;
 }
 template  <class  T>
@@ -14,16 +15,42 @@ Matrix<T> ::Matrix(int r , int c){          /// done
     for(int i = 0 ; i < r ;++i )
         ptrMatrix[i] = new T[c];
 }
+
 template  <class  T>
-Matrix<T>  ::Matrix(const Matrix &obj){    /// todo
+Matrix<T>  Matrix<T>:: operator=(const Matrix<T> &obj ){
+    this->row = obj.row ;
+
+    this->column = obj.column ;
+    if(this->ptrMatrix !=NULL) {
+        for (int (i) = 0; (i) < this->row; ++(i)) {
+            delete[] this->ptrMatrix[i];
+        }
+
+        delete[] this->ptrMatrix;
+        this->ptrMatrix = 0;
+    }
+    this->ptrMatrix = 0 ;
+    this->ptrMatrix = new T*[this->row];
+    for(int i = 0 ; i < this->row ;++i )
+        this->ptrMatrix[i] = new T[this->column];
+    for(int i = 0 ; i < this->row ; ++i) {
+        for (int j = 0; j < this->column; ++j) {
+            this->ptrMatrix[i][j] = obj.ptrMatrix[i][j];
+        }
+    }
+    return  *this;
+}
+template  <class  T>
+Matrix<T>  ::Matrix(const Matrix<T> &obj){    /// todo
     this->row    = obj.row;
     this->column = obj.column;
-    this->flag = obj.flag;
-    if(this->ptrMatrix != NULL)
-        delete [] this->ptrMatrix;
-    ptrMatrix = new T*[row];
+//    this->flag = obj.flag;
+    /// todo take care of this don't delete it
+//    if(this->ptrMatrix != NULL)
+//        delete [] this->ptrMatrix;
+    this->ptrMatrix = new T*[row];
     for(int i = 0 ; i < row ;++i )
-        ptrMatrix[i] = new T[column];
+        this->ptrMatrix[i] = new T[column];
     for(int i = 0 ; i < row ; ++i) {
         for (int j = 0; j < column; ++j) {
             this->ptrMatrix[i][j] = obj.ptrMatrix[i][j];
@@ -68,11 +95,12 @@ Matrix<T>  Matrix<T> :: operator-(Matrix<T> obj){         /// done with the matr
     
 }
 template  <class  T>
-Matrix <T>  Matrix<T> :: operator * (Matrix<T> obj){ ///todo
-    if(this->column !=obj.row){
+Matrix <T>  Matrix<T> :: operator * (Matrix<T> &obj){ ///todo
+    assert(this->column ==obj.row);
+    /*{
         cout<<"Can't Multiply two matrices the column of the first not equal the row of the second\n";
         return  *this;
-    }
+    }*/
     Matrix<T> ret(this->row , obj.column);
     for (int i = 0; i < this->row; ++i) {       /// looping over each row in the this matrix
         for (int j = 0; j < obj.column; ++j) {  /// looping over each column in obj matrix for every row in this matrix
@@ -90,6 +118,7 @@ template<class T>
 Matrix <T> Matrix <T> ::transpose() {
     int Nr = this->column ;
     int Nc = this->row ;
+
     T ** Nptr = new T*[Nr];
     for(int i = 0 ; i < Nr ; ++i )
         Nptr[i] = new T[Nc];
@@ -98,11 +127,11 @@ Matrix <T> Matrix <T> ::transpose() {
             Nptr[j][i] = ptrMatrix[i][j];
         }
     }
-    delete []ptrMatrix ;
     ptrMatrix = Nptr;
     this->row = Nr;
     this->column = Nc;
-    return *this;
+    Matrix <T> mat = *this;
+    return mat;
 }
 template class Matrix<int>;
 template class Matrix<double>;

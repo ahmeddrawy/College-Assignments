@@ -11,7 +11,6 @@
  *
  */
  /*     TODO
-  *     1- COPY CONSTRUCTOR FOR THE GENERIC CLASS
   *
   *
   *
@@ -30,7 +29,7 @@
             dimensions decided by the user. [2 points]
      done (6) Overload standard operators and I/O operators to enable Matrix class with addition, subtraction
     and   multiplication and suitable input and output capabilities. Add a method for matrix transpose.
-  todo   (7) Then develop a MatrixCalculator class which offers the user a menu of operations to perform
+  done    (7) Then develop a MatrixCalculator class which offers the user a menu of operations to perform
     on int matrices as follows. Each of these options should be able to accept matrices of varying
     dimensions, which the user inputs. For multiplication, the calculator should check that two
             matrices are of dimensions n x m and m x p.
@@ -40,16 +39,19 @@
 #include <iostream>
 #include <bits/stdc++.h>
 #include "Matrix.h"
-#incude "Calcualater.h"
+#include "Calcualater.h"
  using namespace std;
 
 int main() {
-  freopen("in.txt","r",stdin);
-    Matrix<int > m(3 , 2) ;
-    Matrix<int> n(2 , 3) ;
-    
-    cin>>m >> n;
-    cout<<m.transpose();
-    cout<<(m*n);
+
+    Matrix<int > m(1 , 3) ;
+    Matrix<int> n(3 , 1) ;
+
+    cin>>m >>n;
+    Matrix <int >temp = n*m ;
+    cout<<temp<<endl;
+    temp = temp.transpose();
+    cout<<"new \n"<<temp.transpose();
+//    cout<<(m*n);
     return 0;
 }
