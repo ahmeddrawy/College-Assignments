@@ -68,6 +68,7 @@ public:
                 if(option == 7 || option == 6){
                     continue;
                 }
+
                 cout << "Please choose the  matrix or matrices  you want to perform operations on \n";
                 cout << "Note that the result will be saved by default and you can use later\n";
 
