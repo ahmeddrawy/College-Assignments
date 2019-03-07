@@ -44,10 +44,6 @@ template  <class  T>
 Matrix<T>  ::Matrix(const Matrix<T> &obj){    /// todo
     this->row    = obj.row;
     this->column = obj.column;
-//    this->flag = obj.flag;
-    /// todo take care of this don't delete it
-//    if(this->ptrMatrix != NULL)
-//        delete [] this->ptrMatrix;
     this->ptrMatrix = new T*[row];
     for(int i = 0 ; i < row ;++i )
         this->ptrMatrix[i] = new T[column];
@@ -56,18 +52,12 @@ Matrix<T>  ::Matrix(const Matrix<T> &obj){    /// todo
             this->ptrMatrix[i][j] = obj.ptrMatrix[i][j];
         }
     }
-    
+
 }
 template  <class  T>
 Matrix<T>  Matrix<T>:: operator+(Matrix<T> obj){         /// done with the matrices with the same data type
-    if(this->row != obj.row || this->column !=  obj.column   ) {
-        cout << "Can't add two matrices with different sizes\n";
-        return *this;
-    }
-    if(!this->flag || !obj.flag){
-        cout<<"Uninitialised matrices\n";
-        return *this;
-    }
+    assert(this->row == obj.row || this->column ==  obj.column   ) ;
+
     for(int i = 0 ; i< this->row     ; ++i){
         for(int j = 0 ; j< this-> column     ; ++j) {
             this->ptrMatrix[i][j] +=obj.ptrMatrix[i][j];
@@ -78,10 +68,7 @@ Matrix<T>  Matrix<T>:: operator+(Matrix<T> obj){         /// done with the matri
 }
 template  <class  T>
 Matrix<T>  Matrix<T> :: operator-(Matrix<T> obj){         /// done with the matrices with the same data type
-    if(this->row != obj.row || this->column !=  obj.column   ) {
-        cout << "Can't subtract two matrices with different sizes\n";
-        return *this;
-    }
+    assert(this->row == obj.row || this->column ==  obj.column   ) ;
     if(!this->flag || !obj.flag){
         cout<<"Uninitialised matrices\n";
         return *this;
@@ -127,10 +114,15 @@ Matrix <T> Matrix <T> ::transpose() {
             Nptr[j][i] = ptrMatrix[i][j];
         }
     }
+    T ** temp =this-> ptrMatrix;
     ptrMatrix = Nptr;
     this->row = Nr;
     this->column = Nc;
     Matrix <T> mat = *this;
+
+    this->ptrMatrix =temp  ;
+    this->row = Nc;
+    this->column = Nr;
     return mat;
 }
 template class Matrix<int>;

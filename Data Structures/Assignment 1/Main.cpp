@@ -44,14 +44,6 @@
 
 int main() {
 
-    Matrix<int > m(1 , 3) ;
-    Matrix<int> n(3 , 1) ;
-
-    cin>>m >>n;
-    Matrix <int >temp = n*m ;
-    cout<<temp<<endl;
-    temp = temp.transpose();
-    cout<<"new \n"<<temp.transpose();
-//    cout<<(m*n);
+    Calcualater c ;
     return 0;
 }
