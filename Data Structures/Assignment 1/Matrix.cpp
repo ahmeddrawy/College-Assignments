@@ -57,7 +57,6 @@ Matrix<T>  ::Matrix(const Matrix<T> &obj){    /// todo
 template  <class  T>
 Matrix<T>  Matrix<T>:: operator+(Matrix<T> obj){         /// done with the matrices with the same data type
     assert(this->row == obj.row || this->column ==  obj.column   ) ;
-
     for(int i = 0 ; i< this->row     ; ++i){
         for(int j = 0 ; j< this-> column     ; ++j) {
             this->ptrMatrix[i][j] +=obj.ptrMatrix[i][j];

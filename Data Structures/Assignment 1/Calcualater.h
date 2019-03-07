@@ -2,6 +2,7 @@
 // Created by ahmed on 3/4/2019.
 //
 #include <bits/stdc++.h>
+#include "Matrix.h"
 using namespace std;
 
 #ifndef ASSIGNMENT_1_CALCUALATER_H
