@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/www/Desktop/College-Assignments/Data Structures/Assignment 3/Problem 1/LinkedList.h
+iostream
+-
+string
+-
+Node.h
+/home/www/Desktop/College-Assignments/Data Structures/Assignment 3/Problem 1/Node.h
+
+/home/www/Desktop/College-Assignments/Data Structures/Assignment 3/Problem 1/Node.h
+
+/home/www/Desktop/College-Assignments/Data Structures/Assignment 3/Problem 1/main.cpp
+iostream
+-
+LinkedList.h
+/home/www/Desktop/College-Assignments/Data Structures/Assignment 3/Problem 1/LinkedList.h
+
